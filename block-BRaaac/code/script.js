@@ -1,6 +1,5 @@
 var input = document.querySelector('input[name = moviename]')
 var movieList = document.querySelector('.movielist');
-var allcheckbox, allspan;
 var movies = [
     {
         name: "thor",
@@ -42,6 +41,9 @@ function celm(type, attribute = {}, ...children){
     for (const key in attribute) {
         if(key.startsWith('data-')){
             element.setAttribute(key, attribute[key])
+        }else if(key.startsWith('on')){
+            let eventType = key.replace('on', '').toLowerCase();
+            element.addEventListener(eventType, attribute[key]);
         }else{
             element[key] = attribute[key];
         }
@@ -67,29 +69,21 @@ function createUI() {
         celm('input', {
             type: "checkbox",
             checked: movie.isWatched,
-            "data-id": index
+            onClick: () => {
+                handleToggle(index)
+            }
         }),
         celm('p', {}, movie.name),
         celm('span', {
             "style.color": "red",
-            "data-id": index
+            onClick: () => {
+                deleteMovie(index)
+            }
         }, "X")
         );        
         movieList.append(li);
     });
-    allcheckbox = Array.from(document.querySelectorAll('input[type="checkbox"]'))
-    allspan = Array.from(document.querySelectorAll('span'))
-    allcheckbox.forEach((checkbox) => {
-        checkbox.addEventListener('click', () => {
-            handleToggle(checkbox.getAttribute('data-id'))
-        });
-    });
     
-    allspan.forEach((span) => {
-        span.addEventListener('click', () => {
-            deleteMovie(span.getAttribute('data-id'))
-        });
-    });
     
 }
 
