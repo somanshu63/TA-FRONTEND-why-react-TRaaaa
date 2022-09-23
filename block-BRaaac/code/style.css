@@ -1,0 +1,44 @@
+
+body{
+    background-color: darkseagreen;
+}
+.watchlist{
+    width: 400px;
+    margin: 3rem auto;
+    border: 2px solid blue;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: rgb(252, 247, 174);
+}
+.watchlist input{
+    width: 98%;
+    padding: 3px;
+}
+h1{
+    text-align: center;
+    margin: 1rem;
+    text-transform: capitalize;
+    color: rgb(255, 238, 0);
+}
+ul{
+    padding: 0;
+}
+ul li{
+    list-style: none;
+    font-size: 24px;
+    margin: 12px 0;
+    color: rgb(255, 0, 98);
+}
+.flex{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+p, input, span{
+    font-size: 20px;
+    padding: 0 1rem ;
+    margin: 0;
+}
+.flex input{
+    width: 10%;
+}
