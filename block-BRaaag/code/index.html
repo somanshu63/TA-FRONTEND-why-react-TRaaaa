@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>moviewatchlist</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/615eec2c8f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+
+</header>
+<main>
+    <h1>movie watch list</h1>
+    <div class="watchlist">
+        <input type="text" name="moviename" id="" placeholder="enter movie name">
+        <hr>
+        <ul class="movielist">
+        </ul>
+    </div>
+    <script
+    crossorigin
+    src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        var input = document.querySelector('input[name = moviename]')
+        var movieList = document.querySelector('.movielist');
+        var movies = [
+            {
+                name: "thor",
+                isWatched: false
+            },
+            {
+                name: "thor5",
+                isWatched: false
+            },
+        ];
+
+        input.addEventListener('keyup', (event) => {
+            
+            if(event.keyCode == 13){
+                var movie = {
+                    name: input.value,
+                    isWatched: false
+                }
+                movies.push(movie);
+                createUI();
+                input.value = "";
+            }
+        });
+
+
+
+        function handleToggle(index) {
+            movies[index].isWatched = !movies[index].isWatched;
+            createUI();
+        }
+
+        function deleteMovie(index) {
+            movies.splice(index, 1);
+            createUI();
+        }
+
+
+        function createUI() {
+            var ui = movies.map((movie, index) => {
+                return (
+                    <li className="flex" >
+                        <input type="checkbox" data-id={index} defaultChecked={movie.isWatched} onClick={() => {
+                            handleToggle(index)
+                        }} />
+                        <p>{movie.name}</p>
+                        <span id={index} onClick={() => {
+                            deleteMovie(index)
+                        }}>X</span>
+                    </li>
+                );
+                
+            });
+            ReactDOM.render(ui, movieList)
+        }
+
+        createUI();
+
+
+    </script>
+</main>
+<footer>
+
+</footer>
+</body>
