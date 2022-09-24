@@ -26,6 +26,7 @@
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
+        var monthNames = ['Jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
         let cardInfo = {
         title: 'City Lights in New York',
         date: new Date('2017-01-26'),
@@ -40,7 +41,7 @@
         let articles = <div className="article">
             <img src={cardInfo.imageURL} alt="desert" />
             <div className="date">
-                <p><span>26</span> <br/> Jan</p>
+                <p><span>{cardInfo.date.getDate()}</span> <br/> {monthNames[cardInfo.date.getMonth()]}</p>
             </div>
             <div className="padding">
                 <p className="category">{cardInfo.category}</p>
