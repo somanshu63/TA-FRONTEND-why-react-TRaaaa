@@ -28,7 +28,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        let cardInfo = [
+        let articles = [
         {
             title: 'City Lights in New York',
             date: new Date('2017-01-26'),
@@ -69,62 +69,31 @@
             <h1>All Articles</h1>
             <p>Collection of best articles on startup</p>
         </>
-        let Articles = (props)=> (
-        <>
-        <div className="article">
-            <img src={props.imageURL} alt="desert" />
-            <div className="date">
-                <p><span>{props.date}</span> <br/> {props.monthNames}</p>
+        function Article (props){
+        return (
+            <div className="article">
+                <img src={props.articleInfo.imageURL} alt="desert" />
+                <div className="date">
+                    <p><span>{props.articleInfo.date.getDate()}</span> <br/> {monthNames[props.articleInfo.date.getMonth()]}</p>
+                </div>
+                <div className="padding">
+                    <p className="category">{props.articleInfo.category}</p>
+                    <h2>{props.articleInfo.title}</h2>
+                    <h4>{props.articleInfo.subTitle}</h4>
+                    <p>{props.articleInfo.description}</p>
+                    <div className="flex">
+                        <span>o 6 mins ago</span>
+                        <span><i className="fa-solid fa-comments"></i>{props.articleInfo.comments} comments</span>
+                    </div>    
+                </div>
             </div>
-            <div className="padding">
-                <p className="category">{props.category}</p>
-                <h2>{props.title}</h2>
-                <h4>{props.subTitle}</h4>
-                <p>{props.description}</p>
-                <div className="flex">
-                    <span>o 6 mins ago</span>
-                    <span><i className="fa-solid fa-comments"></i>{props.comments} comments</span>
-                </div>    
-            </div>
-        </div>
-        </>
-        );
-        var allArticles = (
-            <>
-                <Articles 
-                imageURL={cardInfo[0].imageURL}
-                date={cardInfo[0].date.getDate()}
-                monthNames={monthNames[cardInfo[0].date.getMonth()]}
-                category={cardInfo[0].category}
-                title={cardInfo[0].title}
-                subTitle={cardInfo[0].subTitle}
-                description={cardInfo[0].description}
-                comments={cardInfo[0].comments}
-                />
-                <Articles 
-                imageURL={cardInfo[1].imageURL}
-                date={cardInfo[1].date.getDate()}
-                monthNames={monthNames[cardInfo[1].date.getMonth()]}
-                category={cardInfo[1].category}
-                title={cardInfo[1].title}
-                subTitle={cardInfo[1].subTitle}
-                description={cardInfo[1].description}
-                comments={cardInfo[1].comments}
-                />
-                <Articles 
-                imageURL={cardInfo[2].imageURL}
-                date={cardInfo[2].date.getDate()}
-                monthNames={monthNames[cardInfo[2].date.getMonth()]}
-                category={cardInfo[2].category}
-                title={cardInfo[2].title}
-                subTitle={cardInfo[2].subTitle}
-                description={cardInfo[2].description}
-                comments={cardInfo[2].comments}
-                />
-            </>
-        )
+            );    
+        }
+        function Articles () {
+            return articles.map((article) => <Article articleInfo={article} />);
+        }
         ReactDOM.render(h2, document.querySelector('.heading'))
-        ReactDOM.render(allArticles,document.querySelector('.root'));
+        ReactDOM.render(<Articles />,document.querySelector('.root'));
     </script>
 </main>
 <footer>
