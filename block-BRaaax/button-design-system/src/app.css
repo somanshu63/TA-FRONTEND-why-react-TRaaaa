@@ -1,0 +1,25 @@
+.button {
+  padding: 6px 8px;
+  border: 1px solid black;
+}
+.button--primary {
+  border-color: #1a317d;
+  background-color: #1a317d;
+  color: white;
+}
+.button--secondary {
+  border-color: white;
+  background-color: #1a317d;
+}
+.button--tertiary {
+  border-color: black;
+}
+.button-small {
+  padding: 4px 6px;
+}
+.button-medium {
+  padding: 6px 8px;
+}
+.button-large {
+  padding: 16px 20px;
+}
