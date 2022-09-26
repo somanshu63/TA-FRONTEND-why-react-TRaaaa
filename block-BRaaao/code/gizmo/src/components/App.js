@@ -4,8 +4,10 @@ function App(props){
     return (
         [
             <Header />,
-            <Hero />,
-            <Articles />,
+            <main>
+                <Hero />
+                <Articles />
+            </main>,
             <Footer />
         ]
     )
@@ -35,23 +37,23 @@ function Hero(props) {
 
 function Articles(props){
     return(
-        <div className="articles">
+        <section className="articles">
             <h1>Articles</h1>
             <div className="flex">
                 {
-                    articles.map((article) => <Article info={article} />)
+                    articles.map((article) => <Article key={article.publishedAt} {...article} />)
                 }
             </div>
-        </div>
+        </section>
     )
 }
 
 function Article(props) {
     return(
         <div className='article'>
-            <img src={props.info.urlToImage} alt={props.info.title}></img>
+            <img src={props.urlToImage} alt={props.title}></img>
             <div className='padding-1'>
-                <h3 className='title'>{props.info.title}</h3>
+                <h3 className='title'>{props.title}</h3>
             </div>
         </div>
     )
@@ -62,9 +64,9 @@ function Footer(props) {
         <div className='footer flex'>
             <small>2020 All Rights Reserved</small>
             <div className='flex'>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-facebook-f"></i>
+                <i className="fa-brands fa-twitter"></i>
+                <i className="fa-brands fa-instagram"></i>
             </div>
         </div>
     )
