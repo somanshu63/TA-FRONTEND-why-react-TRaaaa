@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>button</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/615eec2c8f.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    button{
+        background-color: #04abf8;
+        border: 2px solid rgb(4, 230, 4);
+        margin: 2rem 0.5rem;
+        color: white;
+        
+        outline: none;
+    }
+</style>
+<body>
+<header>
+
+</header>
+<main>
+    <div class="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        function App(props) {
+            return(
+                <>
+                    <button disabled size="small">label1</button>
+                    <button type="primary" size="large">label2</button>
+                    <button type="tertiary" size="medium">label3</button>
+                    <button onClick={() => {alert('hello')}}>hello</button>
+                </>
+            )
+        }
+        ReactDOM.render(<App />, document.querySelector('.root'))
+    </script>
+</main>
+<footer>
+
+</footer>
+</body>
